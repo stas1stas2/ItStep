@@ -8,9 +8,9 @@ namespace TitleCapitalizationTool
         internal static void Main()
         {
             string[] articles = { "a", "an", "the" };
-            string[] alliance = { "and", "but", "for", "not", "so", "yet" };
-            string[] excuses = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
-            string[][] allWords = { articles, alliance, excuses };
+            string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
+            string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
+            string[][] allWords = { articles, conjunctions, prepositions };
             string str = Console.ReadLine();
             str = str.Trim();
             str = RemoweDoubleSpaceFromString(str);
@@ -99,7 +99,7 @@ namespace TitleCapitalizationTool
             int firstSymb = -1;
             StringBuilder word = new StringBuilder();
 
-            for (int i = 0, wordSize = 0; i < strLength; i++, wordSize++)
+            for (int i = 0, wordLength = 0; i < strLength; i++, wordLength++)
             {
                 if (str[i] == ' ' || i + 1 == strLength)
                 {
@@ -136,13 +136,13 @@ namespace TitleCapitalizationTool
                             str[firstSymb] = Char.ToUpper(str[firstSymb]);
                     }
                     firstSymb = -1;
-                    wordSize = -1;
+                    wordLength = -1;
                     word.Clear();
                     continue;
                 }
                 if (firstSymb == -1)
                     firstSymb = i;
-                word.Insert(wordSize, str[i]);
+                word.Insert(wordLength, str[i]);
             }
 
             return str.ToString();
