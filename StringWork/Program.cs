@@ -15,15 +15,14 @@ namespace TitleCapitalizationTool
                 string[][] allWords = { articles, conjunctions, prepositions };
                 string str = Console.ReadLine();
                 str = str.Trim();
-                str = RemoweDoubleSpaceFromString(str);
-                str = SymbolsSpacing(str);
-
-                str = ChangeFirstLiteral(str, allWords);
+                str = RemoveDoubleSpace(str);
+                str = NormalizeSpacing(str);
+                str = ChangeFirstLetter(str, allWords);
                 Console.WriteLine(str);
             }
         }
 
-        private static string RemoweDoubleSpaceFromString(string inputString)
+        private static string RemoveDoubleSpace(string inputString)
         {
             var currentString = new StringBuilder();
             currentString.Append(inputString);
@@ -42,7 +41,7 @@ namespace TitleCapitalizationTool
             var returnValue = currentString.ToString();
             return returnValue;
         }
-        private static string SymbolsSpacing(string inputString)
+        private static string NormalizeSpacing(string inputString)
         {
             var str = new StringBuilder();
             str.Append(inputString);
@@ -93,7 +92,7 @@ namespace TitleCapitalizationTool
 
             return str.ToString();
         }
-        private static string ChangeFirstLiteral(string inputString, string[][] keyWords)
+        private static string ChangeFirstLetter(string inputString, string[][] keyWords)
         {
             var str = new StringBuilder();
             str.Append(inputString);
