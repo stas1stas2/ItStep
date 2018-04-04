@@ -25,11 +25,11 @@ namespace TitleCapitalizationTool
             var currentString = new StringBuilder();
             currentString.Append(inputString);
             int stringLength = currentString.Length;
+
             for (int i = 1; i < stringLength; i++)
             {
                 if (currentString[i] == ' ' && currentString[i - 1] == ' ')
                 {
-
                     currentString.Remove(i, 1);
 
                     i--;
@@ -44,6 +44,7 @@ namespace TitleCapitalizationTool
             var str = new StringBuilder();
             str.Append(inputString);
             int strLength = str.Length;
+
             for (int i = 1; i < strLength; i++)
             {
                 if ((str[i] == '.' || str[i] == ',' || str[i] == ':' || str[i] == ';' || str[i] == '!' || str[i] == '?') && str[i - 1] == ' ')
@@ -60,7 +61,6 @@ namespace TitleCapitalizationTool
                             char c = str[i];
                             str[i] = ' ';
                             str[i - 1] = c;
-
                         }
                     }
                     else
@@ -69,7 +69,7 @@ namespace TitleCapitalizationTool
                         strLength--;
                     }
                 }
-
+ 
                 if (str[i] == '-')
                 {
                     if (str[i - 1] != ' ')
@@ -86,8 +86,8 @@ namespace TitleCapitalizationTool
                             i++;
                         }
                 }
-
             }
+
             return str.ToString();
         }
         private static string ChangeFirstLiteral(string inputString, string[][] keyWords)
@@ -98,9 +98,9 @@ namespace TitleCapitalizationTool
             bool IsIncludedInMass = false;
             int firstSymb = -1;
             StringBuilder word = new StringBuilder();
+
             for (int i = 0, wordSize = 0; i < strLength; i++, wordSize++)
             {
-
                 if (str[i] == ' ' || i + 1 == strLength)
                 {
                     string stringWord = word.ToString();
@@ -147,7 +147,5 @@ namespace TitleCapitalizationTool
 
             return str.ToString();
         }
-
-
     }
 }
