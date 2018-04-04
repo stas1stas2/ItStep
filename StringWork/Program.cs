@@ -73,7 +73,7 @@ namespace TitleCapitalizationTool
                     }
                 }
  
-                if (str[i] == '-')
+                if ( i  < strLength && str[i] == '-')
                 {
                     if (str[i - 1] != ' ')
                     {
@@ -102,9 +102,9 @@ namespace TitleCapitalizationTool
             int firstSymb = -1;
             StringBuilder word = new StringBuilder();
 
-            for (int i = 0, wordLength = 0; i < strLength; i++, wordLength++)
+            for (int i = 0, wordLength = 0; i <= strLength; i++, wordLength++)
             {
-                if (str[i] == ' ' || i + 1 == strLength)
+                if (i == strLength || str[i] == ' ')
                 {
                     string stringWord = word.ToString();
                     foreach (string keyword in keyWords[0])
@@ -131,16 +131,18 @@ namespace TitleCapitalizationTool
                     if (IsIncludedInMass == true)
                     {
                         IsIncludedInMass = false;
-                        continue;
                     }
                     else
                     {
-                        if (str[firstSymb] >= 97 && str[firstSymb] <= 122)
-                        {
-                            str[firstSymb] = Char.ToUpper(str[firstSymb]);
+                        str[firstSymb] = Char.ToUpper(word[firstSymb]);
+                        var cycleStr = word.ToString();
 
+                        for (int index = 1; index < cycleStr.Length; index++)
+                        {
+                            str[firstSymb + index] = Char.ToLower(str[firstSymb + index]);
                         }
                     }
+
                     firstSymb = -1;
                     wordLength = -1;
                     word.Clear();
