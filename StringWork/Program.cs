@@ -5,7 +5,7 @@ namespace TitleCapitalizationTool
 {
     internal class Program
     {
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
             string[] articles = { "a", "an", "the" };
             string[] alliance = { "and", "but", "for", "not", "so", "yet" };
