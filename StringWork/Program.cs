@@ -7,17 +7,20 @@ namespace TitleCapitalizationTool
     {
         internal static void Main()
         {
-            string[] articles = { "a", "an", "the" };
-            string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
-            string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
-            string[][] allWords = { articles, conjunctions, prepositions };
-            string str = Console.ReadLine();
-            str = str.Trim();
-            str = RemoweDoubleSpaceFromString(str);
-            str = SymbolsSpacing(str);
+            while (true)
+            {
+                string[] articles = { "a", "an", "the" };
+                string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
+                string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
+                string[][] allWords = { articles, conjunctions, prepositions };
+                string str = Console.ReadLine();
+                str = str.Trim();
+                str = RemoweDoubleSpaceFromString(str);
+                str = SymbolsSpacing(str);
 
-            str = ChangeFirstLiteral(str, allWords);
-            Console.WriteLine(str);
+                str = ChangeFirstLiteral(str, allWords);
+                Console.WriteLine(str);
+            }
         }
 
         private static string RemoweDoubleSpaceFromString(string inputString)
