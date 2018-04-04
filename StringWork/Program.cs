@@ -130,7 +130,17 @@ namespace TitleCapitalizationTool
                     }
                     if (IsIncludedInMass == true)
                     {
-                        IsIncludedInMass = false;
+                        if (firstSymb == 0 || i == strLength)
+                        {
+                            str[firstSymb] = Char.ToUpper(word[0]);
+                            var cycleStr = word.ToString();
+
+                            for (int index = 1; index < cycleStr.Length; index++)
+                            {
+                                str[firstSymb + index] = Char.ToLower(word[index]);
+                            }
+                            IsIncludedInMass = false;
+                        }
                     }
                     else
                     {
