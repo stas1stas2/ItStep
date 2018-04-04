@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace ConsoleApp2
+namespace TitleCapitalizationTool
 {
     class Program
     {
