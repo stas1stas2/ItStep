@@ -134,12 +134,12 @@ namespace TitleCapitalizationTool
                     }
                     else
                     {
-                        str[firstSymb] = Char.ToUpper(word[firstSymb]);
+                        str[firstSymb] = Char.ToUpper(word[0]);
                         var cycleStr = word.ToString();
 
                         for (int index = 1; index < cycleStr.Length; index++)
                         {
-                            str[firstSymb + index] = Char.ToLower(str[firstSymb + index]);
+                            str[firstSymb + index] = Char.ToLower(word[ index]);
                         }
                     }
 
