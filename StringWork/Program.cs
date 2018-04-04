@@ -106,40 +106,36 @@ namespace TitleCapitalizationTool
                 if (i == strLength || str[i] == ' ')
                 {
                     string stringWord = word.ToString();
-                    foreach (string keyword in keyWords[0])
+                    for (int index = 0; index < 3; index++)
                     {
-                        if (stringWord.Equals(keyword))
+                        foreach (string keyword in keyWords[index])
                         {
-                            IsIncludedInMass = true;
-                        }
-                    }
-                    foreach (string keyword in keyWords[1])
-                    {
-                        if (stringWord.Equals(keyword))
-                        {
-                            IsIncludedInMass = true;
-                        }
-                    }
-                    foreach (string keyword in keyWords[2])
-                    {
-                        if (stringWord.Equals(keyword))
-                        {
-                            IsIncludedInMass = true;
+                            if (stringWord.Equals(keyword))
+                            {
+                                IsIncludedInMass = true;
+                            }
                         }
                     }
                     if (IsIncludedInMass == true)
                     {
+                        var cycleStr = word.ToString();
                         if (firstSymb == 0 || i == strLength)
                         {
                             str[firstSymb] = Char.ToUpper(word[0]);
-                            var cycleStr = word.ToString();
-
                             for (int index = 1; index < cycleStr.Length; index++)
                             {
                                 str[firstSymb + index] = Char.ToLower(word[index]);
                             }
-                            IsIncludedInMass = false;
+                            
                         }
+                        else
+                        {
+                            for (int index = 0; index < cycleStr.Length; index++)
+                            {
+                                str[firstSymb + index] = Char.ToLower(word[index]);
+                            }
+                        }
+                        IsIncludedInMass = false;
                     }
                     else
                     {
