@@ -78,13 +78,13 @@ namespace TitleCapitalizationTool
                         strLength++;
                         i++;
                     }
-                    if (i + 1 < strLength)
-                        if (str[i + 1] != ' ')
-                        {
-                            str.Insert(i + 1, ' ');
-                            strLength++;
-                            i++;
-                        }
+                    if (i + 1 < strLength && str[i + 1] != ' ')
+                    {
+                        str.Insert(i + 1, ' ');
+                        strLength++;
+                        i++;
+                       
+                    }
                 }
             }
 
@@ -133,7 +133,10 @@ namespace TitleCapitalizationTool
                     else
                     {
                         if (str[firstSymb] >= 97 && str[firstSymb] <= 122)
+                        {
                             str[firstSymb] = Char.ToUpper(str[firstSymb]);
+
+                        }
                     }
                     firstSymb = -1;
                     wordLength = -1;
@@ -141,7 +144,9 @@ namespace TitleCapitalizationTool
                     continue;
                 }
                 if (firstSymb == -1)
+                {
                     firstSymb = i;
+                }
                 word.Insert(wordLength, str[i]);
             }
 
