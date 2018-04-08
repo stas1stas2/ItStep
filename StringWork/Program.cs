@@ -21,7 +21,7 @@ namespace TitleCapitalizationTool
                 Console.WriteLine(str);
             }
         }
-
+        
         private static string RemoveDoubleSpace(string inputString)
         {
             var currentString = new StringBuilder();
