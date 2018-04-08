@@ -11,10 +11,16 @@ namespace TitleCapitalizationTool
             string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
             string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
             string[][] allWords = { articles, conjunctions, prepositions };
+            
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 string currentString = Console.ReadLine();
+
+                if (currentString == "")
+                {
+                    continue;
+                }
                 currentString = currentString.Trim();
                 currentString = RemoveDoubleSpace(currentString);
                 currentString = NormalizeSpacing(currentString);
