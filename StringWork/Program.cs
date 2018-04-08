@@ -107,9 +107,9 @@ namespace TitleCapitalizationTool
                 if (i == lengthOfCurrentString || currentString[i] == ' ')
                 {
                     string stringWord = word.ToString();
-                    for (int index = 0; index < 3; index++)
+                    foreach (string[] massOfSymbolsWithLowRegister in symbolsWithLowRegister)
                     {
-                        foreach (string keyword in symbolsWithLowRegister[index])
+                        foreach (string keyword in massOfSymbolsWithLowRegister)
                         {
                             if (stringWord.Equals(keyword))
                             {
@@ -145,7 +145,7 @@ namespace TitleCapitalizationTool
 
                         for (int index = 1; index < cycleStr.Length; index++)
                         {
-                            currentString [firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
+                            currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
                         }
                     }
                     firstSymbolOfCurrentString = -1;
