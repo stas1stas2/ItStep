@@ -40,8 +40,7 @@ namespace TitleCapitalizationTool
                 }
                 stringLength = currentString.Length;
             }
-            var returnValue = currentString.ToString();
-            return returnValue;
+            return currentString.ToString();
         }
 
         private static string NormalizeSpacing(string inputString)
