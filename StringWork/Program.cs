@@ -7,17 +7,19 @@ namespace TitleCapitalizationTool
     {
         internal static void Main()
         {
+            string[] articles = { "a", "an", "the" };
+            string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
+            string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
+            string[][] allWords = { articles, conjunctions, prepositions };
             while (true)
             {
-                string[] articles = { "a", "an", "the" };
-                string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
-                string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
-                string[][] allWords = { articles, conjunctions, prepositions };
+                Console.ForegroundColor = ConsoleColor.Red;
                 string currentString = Console.ReadLine();
                 currentString = currentString.Trim();
                 currentString = RemoveDoubleSpace(currentString);
                 currentString = NormalizeSpacing(currentString);
                 currentString = ChangeFirstLetter(currentString, allWords);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(currentString);
             }
         }
