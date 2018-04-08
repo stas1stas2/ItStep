@@ -41,6 +41,7 @@ namespace TitleCapitalizationTool
             var returnValue = currentString.ToString();
             return returnValue;
         }
+
         private static string NormalizeSpacing(string inputString)
         {
             var str = new StringBuilder();
@@ -71,7 +72,6 @@ namespace TitleCapitalizationTool
                         strLength--;
                     }
                 }
- 
                 if ( i  < strLength && str[i] == '-')
                 {
                     if (str[i - 1] != ' ')
@@ -89,9 +89,9 @@ namespace TitleCapitalizationTool
                     }
                 }
             }
-
             return str.ToString();
         }
+
         private static string ChangeFirstLetter(string inputString, string[][] keyWords)
         {
             var str = new StringBuilder();
@@ -147,7 +147,6 @@ namespace TitleCapitalizationTool
                             str[firstSymb + index] = Char.ToLower(word[ index]);
                         }
                     }
-
                     firstSymb = -1;
                     wordLength = -1;
                     word.Clear();
@@ -159,7 +158,6 @@ namespace TitleCapitalizationTool
                 }
                 word.Insert(wordLength, str[i]);
             }
-
             return str.ToString();
         }
     }
