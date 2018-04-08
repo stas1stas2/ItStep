@@ -13,15 +13,15 @@ namespace TitleCapitalizationTool
                 string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
                 string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
                 string[][] allWords = { articles, conjunctions, prepositions };
-                string str = Console.ReadLine();
-                str = str.Trim();
-                str = RemoveDoubleSpace(str);
-                str = NormalizeSpacing(str);
-                str = ChangeFirstLetter(str, allWords);
-                Console.WriteLine(str);
+                string currentString = Console.ReadLine();
+                currentString = currentString.Trim();
+                currentString = RemoveDoubleSpace(currentString);
+                currentString = NormalizeSpacing(currentString);
+                currentString = ChangeFirstLetter(currentString, allWords);
+                Console.WriteLine(currentString);
             }
         }
-        
+
         private static string RemoveDoubleSpace(string inputString)
         {
             var currentString = new StringBuilder();
@@ -44,121 +44,122 @@ namespace TitleCapitalizationTool
 
         private static string NormalizeSpacing(string inputString)
         {
-            var str = new StringBuilder();
-            str.Append(inputString);
-            int strLength = str.Length;
+            var currentString = new StringBuilder();
+            currentString.Append(inputString);
+            int lengthOfCurrentString = currentString.Length;
 
-            for (int i = 1; i < strLength; i++)
+            for (int i = 1; i < lengthOfCurrentString; i++)
             {
-                if ((str[i] == '.' || str[i] == ',' || str[i] == ':' || str[i] == ';' || str[i] == '!' || str[i] == '?') && str[i - 1] == ' ')
+                if ((currentString[i] == '.' || currentString[i] == ',' || currentString[i] == ':' || currentString[i] == ';' || currentString[i] == '!' || currentString[i] == '?') && currentString[i - 1] == ' ')
                 {
-                    if (i + 1 < strLength)
+                    if (i + 1 < lengthOfCurrentString)
                     {
-                        if (str[i + 1] == ' ')
+                        if (currentString[i + 1] == ' ')
                         {
-                            str.Remove(i - 1, 1);
-                            strLength--;
+                            currentString.Remove(i - 1, 1);
+                            lengthOfCurrentString--;
                         }
                         else
                         {
-                            char c = str[i];
-                            str[i] = ' ';
-                            str[i - 1] = c;
+                            char swapChararcter = currentString[i];
+                            currentString[i] = ' ';
+                            currentString[i - 1] = swapChararcter;
                         }
                     }
                     else
                     {
-                        str.Remove(i - 1, 1);
-                        strLength--;
+                        currentString.Remove(i - 1, 1);
+                        lengthOfCurrentString--;
                     }
                 }
-                if ( i  < strLength && str[i] == '-')
+                if (i < lengthOfCurrentString && currentString[i] == '-')
                 {
-                    if (str[i - 1] != ' ')
+                    if (currentString[i - 1] != ' ')
                     {
-                        str.Insert(i, ' ');
-                        strLength++;
+                        currentString.Insert(i, ' ');
+                        lengthOfCurrentString++;
                         i++;
                     }
-                    if (i + 1 < strLength && str[i + 1] != ' ')
+                    if (i + 1 < lengthOfCurrentString && currentString[i + 1] != ' ')
                     {
-                        str.Insert(i + 1, ' ');
-                        strLength++;
+                        currentString.Insert(i + 1, ' ');
+                        lengthOfCurrentString++;
                         i++;
-                       
+
                     }
                 }
             }
-            return str.ToString();
+            return currentString.ToString();
         }
 
-        private static string ChangeFirstLetter(string inputString, string[][] keyWords)
+        private static string ChangeFirstLetter(string inputString, string[][] symbolsWithLowRegister)
         {
-            var str = new StringBuilder();
-            str.Append(inputString);
-            int strLength = str.Length;
-            bool IsIncludedInMass = false;
-            int firstSymb = -1;
+            var currentString = new StringBuilder();
+            currentString.Append(inputString);
+            int lengthOfCurrentString = currentString.Length;
+            bool isSymbolWithLowRegister = false;
+            int firstSymbolOfCurrentString = -1;
             StringBuilder word = new StringBuilder();
 
-            for (int i = 0, wordLength = 0; i <= strLength; i++, wordLength++)
+            for (int i = 0, wordLength = 0; i <= lengthOfCurrentString; i++, wordLength++)
             {
-                if (i == strLength || str[i] == ' ')
+                if (i == lengthOfCurrentString || currentString[i] == ' ')
                 {
                     string stringWord = word.ToString();
                     for (int index = 0; index < 3; index++)
                     {
-                        foreach (string keyword in keyWords[index])
+                        foreach (string keyword in symbolsWithLowRegister[index])
                         {
                             if (stringWord.Equals(keyword))
                             {
-                                IsIncludedInMass = true;
+                                isSymbolWithLowRegister = true;
                             }
                         }
                     }
-                    if (IsIncludedInMass == true)
+                    if (isSymbolWithLowRegister == true)
                     {
                         var cycleStr = word.ToString();
-                        if (firstSymb == 0 || i == strLength)
+                        if (firstSymbolOfCurrentString == 0 || i == lengthOfCurrentString)
                         {
-                            str[firstSymb] = Char.ToUpper(word[0]);
+                            currentString[firstSymbolOfCurrentString] = Char.ToUpper(word[0]);
                             for (int index = 1; index < cycleStr.Length; index++)
                             {
-                                str[firstSymb + index] = Char.ToLower(word[index]);
+                                currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
                             }
-                            
+
                         }
                         else
                         {
                             for (int index = 0; index < cycleStr.Length; index++)
                             {
-                                str[firstSymb + index] = Char.ToLower(word[index]);
+                                currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
                             }
                         }
-                        IsIncludedInMass = false;
+                        isSymbolWithLowRegister = false;
                     }
                     else
                     {
-                        str[firstSymb] = Char.ToUpper(word[0]);
+                        currentString[firstSymbolOfCurrentString] = Char.ToUpper(word[0]);
                         var cycleStr = word.ToString();
 
                         for (int index = 1; index < cycleStr.Length; index++)
                         {
-                            str[firstSymb + index] = Char.ToLower(word[ index]);
+                            currentString [firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
                         }
                     }
-                    firstSymb = -1;
+                    firstSymbolOfCurrentString = -1;
                     wordLength = -1;
                     word.Clear();
                     continue;
                 }
-                if (firstSymb == -1)
+                if (firstSymbolOfCurrentString == -1)
                 {
-                    firstSymb = i;
+                    firstSymbolOfCurrentString = i;
                 }
-                word.Insert(wordLength, str[i]);
+                word.Insert(wordLength, currentString[i]);
             }
-            return str.ToString();
+            return currentString.ToString();
         }
     }
 }
+
