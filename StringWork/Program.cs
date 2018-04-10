@@ -11,9 +11,12 @@ namespace TitleCapitalizationTool
             string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
             string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
             string[][] allWords = { articles, conjunctions, prepositions };
-            
+
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Enter title to capitalize: ");
+
                 Console.ForegroundColor = ConsoleColor.Red;
                 string currentString = Console.ReadLine();
 
@@ -25,8 +28,14 @@ namespace TitleCapitalizationTool
                 currentString = RemoveDoubleSpace(currentString);
                 currentString = NormalizeSpacing(currentString);
                 currentString = ChangeFirstLetter(currentString, allWords);
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Capitalized title: ");
+
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(currentString);
+
+                Console.WriteLine("\n");
             }
         }
 
@@ -133,7 +142,6 @@ namespace TitleCapitalizationTool
                             {
                                 currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
                             }
-
                         }
                         else
                         {
@@ -163,7 +171,7 @@ namespace TitleCapitalizationTool
                 {
                     firstSymbolOfCurrentString = i;
                 }
-                word.Insert(wordLength, currentString[i]);
+                word.Insert(wordLength,  currentString[i]);
             }
             return currentString.ToString();
         }
