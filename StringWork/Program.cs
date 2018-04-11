@@ -77,7 +77,7 @@ namespace TitleCapitalizationTool
             {
                 foreach (char characterLineSeparation in charactersLineSeparation)
                 {
-                    if ( currentString[i] == characterLineSeparation && currentString[i - 1] == ' ')
+                    if (currentString[i] == characterLineSeparation && currentString[i - 1] == ' ')
                     {
                         if (i + 1 < lengthOfCurrentString)
                         {
@@ -146,27 +146,27 @@ namespace TitleCapitalizationTool
                     }
                     if (isSymbolWithLowRegister == true)
                     {
-                        var cycleStr = word.ToString();
-                        
-                        for (int index = 0; index < cycleStr.Length; index++)
+                        int wordsLength = stringWord.Length;
+
+                        for (int index = 0; index < wordsLength; index++)
                         {
-                            currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
+                            currentString[firstSymbolOfCurrentString + index] = char.ToLower(word[index]);
                         }
                         if (firstSymbolOfCurrentString == 0 || i == lengthOfCurrentString)
                         {
-                            currentString[firstSymbolOfCurrentString] = Char.ToUpper(word[0]);
+                            currentString[firstSymbolOfCurrentString] = char.ToUpper(word[0]);
                         }
 
                         isSymbolWithLowRegister = false;
                     }
                     else
                     {
-                        currentString[firstSymbolOfCurrentString] = Char.ToUpper(word[0]);
+                        currentString[firstSymbolOfCurrentString] = char.ToUpper(word[0]);
                         var cycleStr = word.ToString();
 
                         for (int index = 1; index < cycleStr.Length; index++)
                         {
-                            currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
+                            currentString[firstSymbolOfCurrentString + index] = char.ToLower(word[index]);
                         }
                     }
                     firstSymbolOfCurrentString = -1;
