@@ -147,21 +147,16 @@ namespace TitleCapitalizationTool
                     if (isSymbolWithLowRegister == true)
                     {
                         var cycleStr = word.ToString();
+                        
+                        for (int index = 0; index < cycleStr.Length; index++)
+                        {
+                            currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
+                        }
                         if (firstSymbolOfCurrentString == 0 || i == lengthOfCurrentString)
                         {
                             currentString[firstSymbolOfCurrentString] = Char.ToUpper(word[0]);
-                            for (int index = 1; index < cycleStr.Length; index++)
-                            {
-                                currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
-                            }
                         }
-                        else
-                        {
-                            for (int index = 0; index < cycleStr.Length; index++)
-                            {
-                                currentString[firstSymbolOfCurrentString + index] = Char.ToLower(word[index]);
-                            }
-                        }
+
                         isSymbolWithLowRegister = false;
                     }
                     else
