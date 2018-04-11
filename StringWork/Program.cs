@@ -15,7 +15,7 @@ namespace TitleCapitalizationTool
             string askToEnter = "Enter title to capitalize: ";
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write(askToEnter);
 
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -38,13 +38,13 @@ namespace TitleCapitalizationTool
                 currentString = NormalizeSpacing(currentString);
                 currentString = ChangeFirstLetter(currentString, allWords);
 
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("Capitalized title: ");
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(currentString);
 
-                Console.WriteLine("\n");
+                Console.Write("\n");
             }
         }
 
