@@ -11,20 +11,28 @@ namespace TitleCapitalizationTool
             string[] conjunctions = { "and", "but", "for", "not", "so", "yet" };
             string[] prepositions = { "at", "by", "in", "of", "on", "or", "out", "to", "up" };
             string[][] allWords = { articles, conjunctions, prepositions };
-
+            string askToEnter = "Enter title to capitalize: ";
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("Enter title to capitalize: ");
+                Console.Write(askToEnter);
 
                 Console.ForegroundColor = ConsoleColor.Red;
-                string currentString = Console.ReadLine();
-
-                if (currentString == "")
+                string currentString;
+                while (true)
                 {
-                    continue;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    currentString = Console.ReadLine();
+
+                    currentString = currentString.Trim();
+
+                    if (currentString == "")
+                    {
+                        Console.SetCursorPosition(Console.CursorLeft + (askToEnter).Length, Console.CursorTop-1);
+                        continue;
+                    }
+                    break;
                 }
-                currentString = currentString.Trim();
                 currentString = RemoveDoubleSpace(currentString);
                 currentString = NormalizeSpacing(currentString);
                 currentString = ChangeFirstLetter(currentString, allWords);
@@ -171,7 +179,7 @@ namespace TitleCapitalizationTool
                 {
                     firstSymbolOfCurrentString = i;
                 }
-                word.Insert(wordLength,  currentString[i]);
+                word.Insert(wordLength, currentString[i]);
             }
             return currentString.ToString();
         }
