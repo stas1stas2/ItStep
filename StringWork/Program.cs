@@ -5,6 +5,7 @@ namespace TitleCapitalizationTool
 {
     internal class Program
     {
+        private static char[] charactersLineSeparation = { '.', ',', ':', ';', '!', '?' };
         internal static void Main()
         {
             string[] articles = { "a", "an", "the" };
@@ -28,7 +29,7 @@ namespace TitleCapitalizationTool
 
                     if (currentString == "")
                     {
-                        Console.SetCursorPosition(Console.CursorLeft + (askToEnter).Length, Console.CursorTop-1);
+                        Console.SetCursorPosition(Console.CursorLeft + (askToEnter).Length, Console.CursorTop - 1);
                         continue;
                     }
                     break;
@@ -74,26 +75,29 @@ namespace TitleCapitalizationTool
 
             for (int i = 1; i < lengthOfCurrentString; i++)
             {
-                if ((currentString[i] == '.' || currentString[i] == ',' || currentString[i] == ':' || currentString[i] == ';' || currentString[i] == '!' || currentString[i] == '?') && currentString[i - 1] == ' ')
+                foreach (char characterLineSeparation in charactersLineSeparation)
                 {
-                    if (i + 1 < lengthOfCurrentString)
+                    if ( currentString[i] == characterLineSeparation && currentString[i - 1] == ' ')
                     {
-                        if (currentString[i + 1] == ' ')
+                        if (i + 1 < lengthOfCurrentString)
+                        {
+                            if (currentString[i + 1] == ' ')
+                            {
+                                currentString.Remove(i - 1, 1);
+                                lengthOfCurrentString--;
+                            }
+                            else
+                            {
+                                char swapChararcter = currentString[i];
+                                currentString[i] = ' ';
+                                currentString[i - 1] = swapChararcter;
+                            }
+                        }
+                        else
                         {
                             currentString.Remove(i - 1, 1);
                             lengthOfCurrentString--;
                         }
-                        else
-                        {
-                            char swapChararcter = currentString[i];
-                            currentString[i] = ' ';
-                            currentString[i - 1] = swapChararcter;
-                        }
-                    }
-                    else
-                    {
-                        currentString.Remove(i - 1, 1);
-                        lengthOfCurrentString--;
                     }
                 }
                 if (i < lengthOfCurrentString && currentString[i] == '-')
