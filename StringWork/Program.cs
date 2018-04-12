@@ -173,9 +173,9 @@ namespace TitleCapitalizationTool
                         else
                         {
                             currentString[firstSymbolOfCurrentString] = char.ToUpper(word[0]);
-                            var cycleStr = word.ToString();
+                            var cycleString = word.ToString();
 
-                            for (int index = 1; index < cycleStr.Length; index++)
+                            for (int index = 1; index < cycleString.Length; index++)
                             {
                                 currentString[firstSymbolOfCurrentString + index] = char.ToLower(word[index]);
                             }
