@@ -28,7 +28,7 @@ namespace TitleCapitalizationTool
 
                     if (currentString == "")
                     {
-                        Console.SetCursorPosition(Console.CursorLeft + (askToEnter).Length, Console.CursorTop - 1);
+                        Console.SetCursorPosition(Console.CursorLeft + askToEnter.Length, Console.CursorTop - 1);
                         continue;
                     }
                     break;
