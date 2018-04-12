@@ -96,9 +96,9 @@ namespace TitleCapitalizationTool
                                 }
                                 else
                                 {
-                                    char swapChararcter = currentString[i];
+                                    char characterForSwap = currentString[i];
                                     currentString[i] = ' ';
-                                    currentString[i - 1] = swapChararcter;
+                                    currentString[i - 1] = characterForSwap;
                                 }
                             }
                             else
