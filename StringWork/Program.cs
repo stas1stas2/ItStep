@@ -6,6 +6,7 @@ namespace TitleCapitalizationTool
     internal class Program
     {
         private static char[] charactersLineSeparation = { '.', ',', ':', ';', '!', '?' };
+
         internal static void Main()
         {
             string[] articles = { "a", "an", "the" };
