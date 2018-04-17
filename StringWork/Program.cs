@@ -155,7 +155,7 @@ namespace TitleCapitalizationTool
                                 }
                             }
                         }
-                        if (isSymbolWithLowRegister == true)
+                        if (isSymbolWithLowRegister)
                         {
                             int wordsLength = stringWord.Length;
 
